@@ -5,7 +5,6 @@
 
 ##  **Архитектура**
 
-```
 ┌─────────────┐     ┌────────┐     ┌─────────────┐
 │   Клиенты   │────▶│  API   │────▶│    Kafka    │
 └─────────────┘     └────────┘     └──────┬──────┘
@@ -19,7 +18,7 @@
                                    ┌─────────────┐
                                    │  ClickHouse │
                                    └─────────────┘
-```
+
 
 ##  **Технологический стек**
 
@@ -62,7 +61,6 @@
 
 ### **Установка и запуск**
 
-```bash
 # 1. Клонируйте репозиторий
 git clone https://github.com/yourusername/event-analytics-service.git
 cd event-analytics-service
@@ -75,14 +73,14 @@ make migrate-all
 
 # 4. Проверьте, что всё работает
 curl http://localhost:8080/health
-```
+
 
 ##  **API Документация**
 
 ### **Аутентификация**
 
 #### Регистрация
-```bash
+
 curl -X POST http://localhost:8080/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{
@@ -91,22 +89,21 @@ curl -X POST http://localhost:8080/api/v1/auth/register \
     "full_name": "John Doe",
     "company": "Acme Inc"
   }'
-```
 
 #### Логин
-```bash
+
 curl -X POST http://localhost:8080/api/v1/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "user@example.com",
     "password": "password123"
   }'
-```
+
 
 ### **События**
 
 #### Отправка события
-```bash
+
 curl -X POST http://localhost:8080/api/v1/events/track \
   -H "Content-Type: application/json" \
   -H "X-API-Key: YOUR_API_KEY" \
@@ -116,22 +113,22 @@ curl -X POST http://localhost:8080/api/v1/events/track \
     "page_url": "/home",
     "metadata": {"browser": "chrome"}
   }'
-```
+
 
 ### **Статистика**
 
 #### Получение статистики
-```bash
+
 curl "http://localhost:8080/api/v1/stats/events?event_type=page_view&start_date=2024-01-01&end_date=2024-12-31&group_by=day" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
-```
+
 
 #### Экспорт в CSV
-```bash
+
 curl "http://localhost:8080/api/v1/export/csv?event_type=page_view&start_date=2024-01-01&end_date=2024-12-31" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   --output events.csv
-```
+
 
 ##  **Мониторинг**
 
@@ -203,18 +200,16 @@ event-analytics-service/
 
 ##  **Команды Makefile**
 
-```bash
 make docker-up        # Запустить все сервисы
 make docker-down      # Остановить все сервисы
 make migrate-all      # Применить миграции
 make test            # Запустить тесты
 make load-test       # Отправить тестовые события
 make logs            # Просмотр логов
-```
+
 
 ##  **Тестирование**
 
-```bash
 # Unit тесты
 go test ./tests/unit/...
 
@@ -223,7 +218,7 @@ go test ./tests/integration/...
 
 # Все тесты с покрытием
 make test-cover
-```
+
 
 ##  **Производительность**
 
