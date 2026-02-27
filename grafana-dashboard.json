@@ -1,0 +1,36 @@
+{
+  "dashboard": {
+    "title": "Event Analytics Service Dashboard",
+    "panels": [
+      {
+        "title": "Events per Second",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(events_processed_total[1m])",
+            "legendFormat": "{{event_type}}"
+          }
+        ]
+      },
+      {
+        "title": "HTTP Request Duration",
+        "type": "heatmap",
+        "targets": [
+          {
+            "expr": "rate(http_request_duration_seconds_bucket[5m])"
+          }
+        ]
+      },
+      {
+        "title": "Kafka Consumer Lag",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "kafka_consumer_lag",
+            "legendFormat": "{{topic}}-{{partition}}"
+          }
+        ]
+      }
+    ]
+  }
+}
