@@ -200,14 +200,14 @@ event-analytics-service/
 ```
 
 ##  **Команды Makefile**
-
+```
 make docker-up        # Запустить все сервисы
 make docker-down      # Остановить все сервисы
 make migrate-all      # Применить миграции
 make test            # Запустить тесты
 make load-test       # Отправить тестовые события
 make logs            # Просмотр логов
-
+```
 
 ##  **Тестирование**
 
